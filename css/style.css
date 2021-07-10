@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+:root {
+    --bodyBgColor: #f1f1f1;
+    --divBgColor: #fbfbfb;
+    --fontColor: #0A1931;
+    --iconColor: #185ADB;
+    --borderLeftColor: #185ADB;
+    --borderRightColor: #FFC947;
+}
+
+body {
+    background-color: var(--bodyBgColor);
+}

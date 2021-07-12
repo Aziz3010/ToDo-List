@@ -1,3 +1,5 @@
+/* ------- General (All Pages) ------- */
+
 * {
     padding: 0;
     margin: 0;
@@ -9,12 +11,228 @@
 :root {
     --bodyBgColor: #f1f1f1;
     --divBgColor: #fbfbfb;
-    --fontColor: #0A1931;
+    --fontColor: #0a1b36;
     --iconColor: #185ADB;
     --borderLeftColor: #185ADB;
     --borderRightColor: #FFC947;
+    --aHoverColor: #2e5086;
 }
 
 body {
     background-color: var(--bodyBgColor);
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+ul li:last-child {
+    margin-right: 0rem;
+    background-color: var(--fontColor);
+    border-radius: 8px;
+}
+
+ul li:last-child a {
+    color: var(--bodyBgColor);
+}
+
+a {
+    color: var(--fontColor);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 500ms;
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--aHoverColor);
+}
+
+/* ------- Navbar (All Pages) ------- */
+
+#Navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 1rem 0;
+    z-index: 500;
+    box-shadow: 0px 0px 3px var(--fontColor);
+}
+
+#Navbar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#Navbar .container .logoBox {
+    width: calc(100% / 2);
+    padding: .15rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#Navbar .container .linkBox {
+    width: calc(100% / 2);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    padding: .3rem 0;
+}
+
+/* +++++++++ logo +++++++++ */
+
+#Navbar .container .logoBox #logoAncor{
+    font-size: 20px;
+}
+
+#Navbar .container .logoBox h1 {
+    margin: 0;
+    color: var(--fontColor);
+    font-weight: 700;
+}
+
+#Navbar .container .logoBox #menu {
+    background-color: var(--fontColor);
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logoBox #menu span {
+    background-color: var(--divBgColor);
+    height: 3px;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.logoBox #menu span:last-child {
+    margin-bottom: 0px;
+}
+
+/* +++++++++ links +++++++++ */
+
+#Navbar .container .linkBox ul {
+    margin: 0;
+}
+
+.linkBox ul li {
+    padding: .65rem .5rem;
+}
+
+/* +++++++++ media +++++++++ */
+
+@media screen and (max-width: 520px) {
+    #Navbar .container {
+        flex-direction: column;
+    }
+    #Navbar .container .logoBox {
+        width: calc(100% / 1);
+    }
+    #Navbar .container .linkBox {
+        display: none;
+        width: calc(100% / 1);
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    #Navbar .container .logoBox #menu {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 230px) {
+    #Navbar .container .linkBox ul li {
+        display: block;
+        margin: 0;
+    }
+    #Navbar .container .linkBox ul li:last-child {
+        margin-top: 1rem;
+    }
+}
+
+/* ------- Body ( index page ) ------- */
+
+#Landing {
+    height: calc(100vh - 51px);
+    padding-top: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Landing .caption {
+    padding: 1rem;
+    border-radius: 5px;
+    border: 2px solid var(--fontColor);
+    width: 50%;
+}
+
+#Landing .caption h2 {
+    color: var(--fontColor);
+    margin-bottom: 1.5rem;
+}
+
+#Landing .caption p {
+    margin: 0;
+    color: var(--fontColor);
+}
+
+/* ++++++ media ++++++ */
+
+@media screen and (max-width: 767px) {
+    #Landing .caption {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    #Landing .caption {
+        width: 100%;
+        padding: .5rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    #Landing .caption h2 {
+        margin-bottom: .5rem;
+    }
+    #Landing .caption p {
+        font-size: 14px;
+    }
+}
+
+/* ------- footer (All Pages) ------- */
+
+footer {
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0px 0px 5px var(--fontColor);
+}
+
+footer h6{
+    color: var(--fontColor);
+    margin: 0;
+    padding: 0 1.5rem;
+}
+
+footer h6 i {
+    color: red;
 }

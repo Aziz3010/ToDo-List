@@ -236,3 +236,248 @@ footer h6{
 footer h6 i {
     color: red;
 }
+
+/* signin page */
+
+#signInLanding {
+    height: calc(100vh - 51px);
+    padding-top: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signInLanding .form {    
+    display: block;
+    margin: auto;
+    width: 65%;
+}
+
+@media screen and (max-width: 520px) {
+    #signInLanding .form {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    #signInLanding .form {
+        width: 85%;
+    }
+}
+
+/* signUp page */
+
+#signUpLanding {
+    height: calc(100vh - 51px);
+    padding-top: 5.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signUpLanding .form { 
+    display: block;
+    margin: auto;
+    width: 65%;
+}
+
+@media screen and (max-width: 520px) {
+    #signUpLanding .form {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    #signUpLanding .form {
+        width: 85%;
+    }
+}
+
+/* Home page */
+
+#homePageLanding {
+    height: calc(100vh - 51px);
+    padding-top: 5.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* leftSide */
+
+#homePageLanding .leftSide {
+    background-color: #bbbbbb;
+    height: 100%;
+    width: 20%;
+    padding: 0 .5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 1 */
+
+.leftSide #personalInfo {
+    padding: .5rem;
+    width: 100%;
+    height: calc( (100% / 4) - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 2px solid #fbfbfb; */
+    border-radius: 5px;
+}
+
+#personalInfo .image {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-bottom: .5rem;
+}
+
+#personalInfo .image img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#personalInfo .FullName {
+    width: 100%;
+    text-align: center;
+}
+
+#personalInfo .FullName h6 {
+    margin: 0;
+    color: var(--fontColor);
+}
+
+/* 2 */
+
+.leftSide #oldTasks {
+    width: 100%;
+    height: calc( (100% / 4) - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fbfbfb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#oldTasks p,
+#oldTasks i {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fontColor);
+}
+
+#oldTasks i{
+    display: none;
+}
+
+/* 3 */
+
+.leftSide #newTasks {
+    width: 100%;
+    height: calc( (100% / 4) - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fbfbfb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#newTasks p,
+#newTasks i {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fontColor);
+}
+
+#newTasks i{
+    display: none;
+}
+
+/* 4 */
+
+.leftSide #dateBox {
+    width: 100%;
+    height: calc( (100% / 4) - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #fbfbfb;
+    border-radius: 5px;
+}
+
+#dateBox p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fontColor);
+    margin-bottom: 1rem;
+}
+
+#dateBox p:last-child {
+    margin-bottom: 0rem;
+}
+
+
+/* media leftSide */
+
+@media screen and (max-width: 520px) {
+    #homePageLanding .leftSide {
+        width: 50px;
+    }
+    .leftSide #personalInfo,
+    .leftSide #oldTasks,
+    .leftSide #newTasks,
+    .leftSide #dateBox {
+        border: none;
+    }
+    #personalInfo .image,
+    #personalInfo .image img {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+    }
+    #personalInfo .FullName {
+        display: none;
+    }
+    .leftSide #oldTasks p,
+    .leftSide #newTasks p,
+    .leftSide #dateBox p {
+        font-size: .8rem;
+    }
+    #newTasks p,
+    #oldTasks p {
+        display: none;
+    }
+    #newTasks i,
+    #oldTasks i {
+        display: block;
+    }
+}
+
+
+
+/* rightSide */
+#homePageLanding .rightSide {
+    background-color: brown;
+    height: 100%;
+    width: 80%;
+}
+
+/* media rightSide */
+
+@media screen and (max-width: 520px) {
+    #homePageLanding .rightSide {
+        width: calc(100% - 50px);
+    }
+}

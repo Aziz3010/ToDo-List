@@ -183,6 +183,7 @@ a:hover {
     border-radius: 5px;
     border: 2px solid var(--fontColor);
     width: 50%;
+    margin: 0 .5rem;
 }
 
 #Landing .caption h2 {
@@ -222,19 +223,42 @@ a:hover {
 /* ------- footer (All Pages) ------- */
 
 footer {
-    padding: 1rem 0;
+    padding: 1rem;
     text-align: center;
     box-shadow: 0px 0px 5px var(--fontColor);
+    background-color: var(--fontColor);
 }
 
 footer h6{
-    color: var(--fontColor);
+    color: var(--divBgColor);
     margin: 0;
-    padding: 0 1.5rem;
+    font-weight: 400;
 }
 
 footer h6 i {
-    color: red;
+    font-size: 1rem;
+    color: rgb(250, 17, 17);
+    animation-name: Heart;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes Heart {
+    0% {
+        font-size: 1rem;
+    }
+    25% {
+        font-size: .9rem;
+    }
+    50% {
+        font-size: .8rem;
+    }
+    75% {
+        font-size: .9rem;
+    }
+    100% {
+        font-size: 1rem;
+    }
 }
 
 /* signin page */
@@ -307,7 +331,7 @@ footer h6 i {
 /* leftSide */
 
 #homePageLanding .leftSide {
-    background-color: #bbbbbb;
+    background-color: hsla(0, 0%, 73%, 0.568);
     height: 100%;
     width: 20%;
     padding: 0 .5rem;
@@ -327,7 +351,6 @@ footer h6 i {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* border: 2px solid #fbfbfb; */
     border-radius: 5px;
 }
 
@@ -428,7 +451,6 @@ footer h6 i {
     margin-bottom: 0rem;
 }
 
-
 /* media leftSide */
 
 @media screen and (max-width: 520px) {
@@ -465,19 +487,146 @@ footer h6 i {
     }
 }
 
-
-
 /* rightSide */
+
 #homePageLanding .rightSide {
-    background-color: brown;
     height: 100%;
     width: 80%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+#homePageLanding .rightSide .mainTask {
+    background-color: #fff;
+    width: 32%;
+    margin: .3rem;
+    border: 2px solid #d5d5d5;
+    border-radius: 10px;
+}
+
+.rightSide .mainTask .topBox {
+    background-color: var(--bodyBgColor);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1.5rem;
+    border-bottom: 4px double var(--fontColor);
+}
+
+.mainTask .topBox p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--fontColor);
+    font-weight: 500;
+}
+
+.mainTask .tasksBox {
+    padding: .5rem 0;
+}
+
+.mainTask .tasksBox .task {
+    background-color: rgba(204, 204, 204, 0.247);
+    margin-bottom: .5rem;
+    padding: .5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tasksBox .task input{
+    margin-right: 1rem;
+}
+
+.mainTask .tasksBox .task:last-child{
+    margin-bottom: 0rem;
+}
+
+.tasksBox .task p {
+    margin: 0;
+}
+
+.mainTask .inputBox {
+    padding: 0 1rem;
+    margin: 1rem 0 .5rem 0;
+}
+
+.mainTask .inputBox input {
+    width: 100%;
+    padding: .5rem;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #1859dba8;
+}
+::placeholder {
+    color: #fff;
+    font-weight: 400;
+}
+
+.mainTask .toolBox {
+    background-color: var(--bodyBgColor);
+    padding: .6rem;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainTask .toolBox i {
+    margin-right: 1.5rem ;
+    font-size: 1.2rem;
+}
+
+.mainTask .toolBox i:last-child {
+    margin-right: 0rem ;
+}
+
+.mainTask .toolBox i:nth-child(1){
+    color: var(--iconColor);
+}
+
+.mainTask .toolBox i:nth-child(2){
+    color: var(--borderRightColor);    
+}
+
+.mainTask .toolBox i:nth-child(3){
+    color: red;
 }
 
 /* media rightSide */
 
+@media screen and (max-width: 1000px) {
+    #homePageLanding .rightSide {
+        flex-wrap: wrap;
+    }
+    #homePageLanding .rightSide .mainTask {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #homePageLanding .rightSide .mainTask {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 520px) {
     #homePageLanding .rightSide {
         width: calc(100% - 50px);
+    }
+    #homePageLanding .rightSide .mainTask {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #homePageLanding .rightSide {
+        padding: 1rem;
     }
 }

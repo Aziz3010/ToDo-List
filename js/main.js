@@ -8,7 +8,6 @@ let Months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov",
 let DayNameLeftSide = document.getElementById("DayName");
 let ClockLeftSide = document.getElementById("Clock");
 let DayNumLeftSide = document.getElementById("DayNum");
-
 // //////////////////////////////////////////////////////////////////
 
 // click on menu btn & open linkBox
@@ -25,17 +24,20 @@ $("#menu").click(function(){
 
 // get Data from storage
 
-if(localStorage.getItem("allTaskBox") != null){
+if(JSON.parse(localStorage.getItem("allTaskBox")) != null){
     allOldTaskBox = JSON.parse(localStorage.getItem("allTaskBox"));
     displayTaskBox();
 }else{
     allOldTaskBox = [];
 }
 
+// console.log();
+
 // click on new task icon
 newTasksBTN.addEventListener("click",function(){
+    setCurrentDateRightSide()
+    createTaskBoxOJ()
     displayTaskBox()
-    createTaskBox()
 });
 
 // current Date
@@ -59,50 +61,107 @@ getDateInfo();
 // change date left side
 function setCurrentDateLeftSide(theDayWeek,theDayMonth,theMonth,theHours,theMinutes,theSeconds){
     DayNameLeftSide.innerHTML = Days[theDayWeek];
-    DayNumLeftSide.innerHTML = theDayMonth +" "+ Months[theMonth];
+    DayNumLeftSide.innerHTML = theDayMonth + Months[theMonth];
     ClockLeftSide.innerHTML = theHours +":"+theMinutes+":"+theSeconds;    
 };
 
-/*
 // change date right side
-
 var dayNumber_NameRightSide;
 var currentTimeRightSide;
 
-(function setCurrentDateRightSide(){
+function setCurrentDateRightSide(){
     // Date
     let theDate = new Date(); // all Date
     let theMonth = theDate.getMonth(); // 0-11
     let theDayMonth = theDate.getDate(); // 1-31
     let theHours = theDate.getHours(); // 1-24
     let theMinutes = theDate.getMinutes(); // 1-60
+    let theSeconds = theDate.getSeconds(); // 1-60
 
     dayNumber_NameRightSide = theDayMonth +" "+ Months[theMonth];
-    currentTimeRightSide = theHours +":"+theMinutes;
-    // setTimeout(setCurrentDateRightSide,1000)
-})();
+    currentTimeRightSide = theHours +":"+theMinutes +":"+ theSeconds;
 
-console.log(dayNumber_NameRightSide,currentTimeRightSide);
+    // console.log(dayNumber_NameRightSide,currentTimeRightSide);
+};
+
+/*
+// save taskBox in storage
+// function createTaskBox(){
+//     box="";
+//     for(var i=0 ; i<allOldTaskBox.length ; i++){
+//         box+=`
+//         <div class="mainTask">
+//             <div class="topBox">
+//                 <p id="dayNumber_Name"></p>
+//                 <p id="currentTime"></p>
+//             </div>
+//             <div class="tasksBox">
+//                 <div class="task">
+//                     <input type="checkbox">
+//                     <p>Take a shower</p>
+//                 </div>
+//             </div>
+//             <div id="inputBox${i}" class="inputBox">
+//                 <input type="text" placeholder="New Task..">
+//             </div>  
+//             <div class="toolBox">
+//                 <i id="addTask" onClick="clickAddIcon(${i})" class="fas fa-plus"></i>
+//                 <i id="editTask" class="far fa-edit"></i>
+//                 <i id="deleteTask" class="far fa-trash-alt"></i>
+//             </div>
+//         </div>
+//         `
+//         rightSide.innerHTML = box;
+//     }
+//     allOldTaskBox.push(box);
+//     localStorage.setItem("allTaskBox",JSON.stringify(allOldTaskBox));
+// };
 */
 
+
+// /// test
+
+
+
+let nameOfTheDay = document.getElementById("dayNumber_Name");
+let theClock = document.getElementById("currentTime");
+let theCurrentInput = document.querySelectorAll("#taskText");
+
+
+function createTaskBoxOJ(){
+    newTaskBoxOJ = {
+        // time
+        dayNameOJ : dayNumber_NameRightSide,
+        currentTimeOJ : currentTimeRightSide,
+        // text
+        taskTextOJ : ""
+    }
+    allOldTaskBox.push(newTaskBoxOJ);
+    localStorage.setItem("allTaskBox",JSON.stringify(allOldTaskBox));
+    location.reload();
+}
+
+
+
 // display task box --- html
+
 function displayTaskBox(){
     box="";
     for(var i=0 ; i<allOldTaskBox.length ; i++){
         box+=`
         <div class="mainTask">
             <div class="topBox">
-                <p id="dayNumber_Name"></p>
-                <p id="currentTime"></p>
+                <p id="dayNumber_Name">${allOldTaskBox[i].dayNameOJ}</p>
+                <p id="currentTime">${allOldTaskBox[i].currentTimeOJ}</p>
             </div>
             <div class="tasksBox">
                 <div class="task">
                     <input type="checkbox">
-                    <p>Take a shower</p>
+                    <p>${allOldTaskBox[i].taskTextOJ}</p>
                 </div>
             </div>
             <div id="inputBox${i}" class="inputBox">
-                <input type="text" placeholder="New Task..">
+                <input id="taskText" type="text" placeholder="New Task..">
             </div>  
             <div class="toolBox">
                 <i id="addTask" onClick="clickAddIcon(${i})" class="fas fa-plus"></i>
@@ -115,38 +174,6 @@ function displayTaskBox(){
     rightSide.innerHTML = box;
 };
 
-// save taskBox in storage
-function createTaskBox(){
-    box="";
-    for(var i=0 ; i<allOldTaskBox.length ; i++){
-        box+=`
-        <div class="mainTask">
-            <div class="topBox">
-                <p id="dayNumber_Name"></p>
-                <p id="currentTime"></p>
-            </div>
-            <div class="tasksBox">
-                <div class="task">
-                    <input type="checkbox">
-                    <p>Take a shower</p>
-                </div>
-            </div>
-            <div id="inputBox${i}" class="inputBox">
-                <input type="text" placeholder="New Task..">
-            </div>  
-            <div class="toolBox">
-                <i id="addTask" onClick="clickAddIcon(${i})" class="fas fa-plus"></i>
-                <i id="editTask" class="far fa-edit"></i>
-                <i id="deleteTask" class="far fa-trash-alt"></i>
-            </div>
-        </div>
-        `
-        rightSide.innerHTML = box;
-    }
-    allOldTaskBox.push(box);
-    localStorage.setItem("allTaskBox",JSON.stringify(allOldTaskBox));
-};
-
 // add task when click on add icon 
 function clickAddIcon(currentTask){
     let inputBoxOffset = $(`#inputBox${currentTask}`).offset().top;
@@ -155,8 +182,28 @@ function clickAddIcon(currentTask){
         $(`#inputBox${currentTask}`).slideDown(500);
     }else{
         $(`#inputBox${currentTask}`).slideUp(500);
-    }    
+        setValueToP(currentTask)
+    }
 };
+
+// set Value of input to P
+
+function setValueToP(currentTask) {
+    var text = theCurrentInput[currentTask].value;
+    allOldTaskBox[currentTask].taskTextOJ = text;
+    displayTaskBox();
+    localStorage.setItem("allTaskBox",JSON.stringify(allOldTaskBox));
+    location.reload();
+    // addSmallTaskInTasksBox();
+}
+
+
+function addSmallTaskInTasksBox() {
+    console.log("Aaa");
+}
+
+
+
 
 // ////////////////////////////////////////
 
